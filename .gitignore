@@ -1,0 +1,15 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Generated parser output
+parsed.json
+
+# Node / Wrangler
+node_modules/
+.wrangler/
+.dev.vars
+
+# OS / editor
+.DS_Store

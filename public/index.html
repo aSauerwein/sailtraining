@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSVÖ Fragenkatalog – Fahrtbereich 2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">⚓</span>
+        <div>
+          <h1>MSVÖ&nbsp;Fragenkatalog</h1>
+          <p>Fahrtbereich 2 · Motor- und Segelantrieb</p>
+        </div>
+      </div>
+      <button id="restartBtn" class="ghost" hidden>Abbrechen</button>
+    </header>
+
+    <main>
+      <section id="screen-setup" class="screen">
+        <div class="hero">
+          <h2>Theorieprüfung trainieren</h2>
+          <p>Wähle deine Themen und die Anzahl der Fragen. Anschließend beantwortest du die Fragen und erhältst am Ende eine Auswertung gesamt und pro Sachgebiet.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>1. Themen auswählen</h3>
+            <div class="head-actions">
+              <button id="selectAll" class="ghost small">Alle</button>
+              <button id="selectNone" class="ghost small">Keine</button>
+            </div>
+          </div>
+          <div id="topics" class="topics"></div>
+          <p id="selectedInfo" class="hint"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>2. Anzahl der Fragen</h3>
+          </div>
+          <div class="count-row">
+            <button class="chip" data-count="10">10</button>
+            <button class="chip" data-count="20">20</button>
+            <button class="chip" data-count="30">30</button>
+            <button class="chip" data-count="50">50</button>
+            <button class="chip" data-count="all">Alle</button>
+            <input id="countInput" type="number" min="1" value="20" />
+          </div>
+          <p id="countInfo" class="hint"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>3. Fortschritt</h3>
+            <div class="head-actions">
+              <button id="resetProgress" class="ghost small danger">Fortschritt löschen</button>
+            </div>
+          </div>
+          <label class="opt-toggle">
+            <input type="checkbox" id="onlyUnsolved" />
+            <span>Nur Fragen üben, die noch <strong>nie richtig beantwortet</strong> wurden</span>
+          </label>
+          <p id="progressInfo" class="hint"></p>
+        </div>
+
+        <div class="actions">
+          <button id="startBtn" class="primary big">Prüfung starten</button>
+        </div>
+      </section>
+
+      <section id="screen-quiz" class="screen" hidden>
+        <div class="quiz-bar">
+          <div class="progress">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <div class="quiz-meta">
+            <span id="qCounter">Frage 1 / 20</span>
+            <span id="scoreLive" class="score-live">0 richtig</span>
+          </div>
+        </div>
+
+        <div class="card question-card">
+          <div class="q-tags">
+            <span id="qCode" class="tag code"></span>
+            <span id="qCat" class="tag cat"></span>
+          </div>
+          <h2 id="qText" class="q-text"></h2>
+          <div id="qImageWrap" class="q-image-wrap" hidden>
+            <img id="qImage" alt="Abbildung zur Frage" />
+          </div>
+          <ul id="answers" class="answers"></ul>
+
+          <div id="feedback" class="feedback" hidden></div>
+
+          <div class="actions row">
+            <button id="checkBtn" class="primary" disabled>Antworten prüfen</button>
+            <button id="nextBtn" class="primary" hidden>Nächste Frage</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-result" class="screen" hidden>
+        <div class="card result-hero">
+          <h2>Ergebnis</h2>
+          <div class="big-score">
+            <span id="overallPct">0%</span>
+            <span id="overallDetail" class="muted"></span>
+          </div>
+          <div id="verdict" class="verdict"></div>
+          <p id="newMastered" class="hint"></p>
+          <p id="progressNow" class="hint"></p>
+          <p class="hint">Bestanden ab 75 % aller Fragen (MSVÖ-Richtlinie).</p>
+        </div>
+
+        <div class="card">
+          <h3>Auswertung pro Sachgebiet</h3>
+          <div id="sectionResults" class="results"></div>
+        </div>
+
+        <div class="card">
+          <h3>Auswertung pro Kapitel</h3>
+          <div id="chapterResults" class="results"></div>
+        </div>
+
+        <div id="reviewWrap" class="card" hidden>
+          <h3>Falsch beantwortete Fragen</h3>
+          <div id="review" class="review"></div>
+        </div>
+
+        <div class="actions">
+          <button id="againBtn" class="primary big">Neue Übung</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="footerSource"></span>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
